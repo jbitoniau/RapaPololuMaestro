@@ -2,6 +2,9 @@ RapaPololuMaestro
 =================
 A cross-platform C++ library for controlling Pololu Maestro devices
 
+![alt text](RapaPololuMaestro1.jpg?raw=true "Pololu Maestro driving a servo")
+![alt text](RapaPololuMaestro2.jpg?raw=true "Pololu Maestro controlled by a Raspberry Pi")
+
 # Overview 
 RapaPololuMaestro (formerly [Polstro](https://code.google.com/p/polstro/)) is a lightweight cross-platform C++ library that provides access, in an object-oriented fashion, to one or more [Pololu Maestro servo-controller devices](http://www.pololu.com/docs/0J40) connected to the computer.
 
