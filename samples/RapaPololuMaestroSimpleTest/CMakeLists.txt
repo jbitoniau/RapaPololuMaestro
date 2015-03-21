@@ -1,0 +1,39 @@
+CMAKE_MINIMUM_REQUIRED( VERSION 3.0 )
+
+PROJECT( RapaPololuMaestroSimpleTest )
+
+IF( MSVC )
+	INCLUDE( RapaConfigureVisualStudio )
+ENDIF()
+
+INCLUDE_DIRECTORIES( ${RapaPololuMaestro_SOURCE_DIR} )
+
+SET( SOURCES Main.cpp )
+
+SOURCE_GROUP("" FILES ${SOURCES} )		# Avoid "Header Files" and "Source Files" virtual folders in VisualStudio
+
+ADD_EXECUTABLE( ${PROJECT_NAME} ${SOURCES} )
+TARGET_LINK_LIBRARIES( ${PROJECT_NAME} RapaPololuMaestro )
+
+#
+# Install
+#
+IF( CMAKE_SYSTEM_NAME MATCHES "Windows" )
+	INSTALL( TARGETS  ${PROJECT_NAME}
+			 CONFIGURATIONS Debug
+			 RUNTIME DESTINATION "bin/debug" 
+			 LIBRARY DESTINATION "lib"
+			 ARCHIVE DESTINATION "lib"	)
+	INSTALL( TARGETS  ${PROJECT_NAME}
+			 CONFIGURATIONS Release
+			 RUNTIME DESTINATION "bin/release" 
+			 LIBRARY DESTINATION "lib"
+			 ARCHIVE DESTINATION "lib"	)
+ELSE()
+	INSTALL( TARGETS  ${PROJECT_NAME}
+			 RUNTIME DESTINATION "bin" 
+			 LIBRARY DESTINATION "lib"
+			 ARCHIVE DESTINATION "lib"	)
+ENDIF()
+
+ 
