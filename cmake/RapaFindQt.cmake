@@ -28,23 +28,21 @@ IF( RAPA_USE_QT5 )
 			GET_TARGET_PROPERTY( RAPA_QT_CORE_DEBUG_DLL Qt5::Core LOCATION_DEBUG )
 			SET( RAPA_QT_ROOT_DIR "${RAPA_QT_CORE_DEBUG_DLL}/../.." )
 			GET_FILENAME_COMPONENT( RAPA_QT_ROOT_DIR ${RAPA_QT_ROOT_DIR} ABSOLUTE)
+
+			FILE( GLOB RAPA_QT_ICU_DLLS "${RAPA_QT_ROOT_DIR}/bin/icu*.dll")		# Find ICU DLLs
 			SET( RAPA_QT_DEBUG_DLLS 
-				${RAPA_QT_ROOT_DIR}/bin/icudt53.dll 
-				${RAPA_QT_ROOT_DIR}/bin/icuin53.dll 
-				${RAPA_QT_ROOT_DIR}/bin/icuuc53.dll 
 				${RAPA_QT_ROOT_DIR}/bin/Qt5Cored.dll 
 				${RAPA_QT_ROOT_DIR}/bin/Qt5Guid.dll
 				${RAPA_QT_ROOT_DIR}/bin/Qt5Widgetsd.dll )
+			SET( RAPA_QT_DEBUG_DLLS ${RAPA_QT_DEBUG_DLLS} ${RAPA_QT_ICU_DLLS} )
 			SET( RAPA_QT_DEBUG_PLATFORMS_DLLS
 				${RAPA_QT_ROOT_DIR}/plugins/platforms/qwindowsd.dll ) 
 
 			SET( RAPA_QT_RELEASE_DLLS 
-				${RAPA_QT_ROOT_DIR}/bin/icudt53.dll 
-				${RAPA_QT_ROOT_DIR}/bin/icuin53.dll 
-				${RAPA_QT_ROOT_DIR}/bin/icuuc53.dll 
 				${RAPA_QT_ROOT_DIR}/bin/Qt5Core.dll 
 				${RAPA_QT_ROOT_DIR}/bin/Qt5Gui.dll
 				${RAPA_QT_ROOT_DIR}/bin/Qt5Widgets.dll )
+			SET( RAPA_QT_RELEASE_DLLS ${RAPA_QT_RELEASE_DLLS} ${RAPA_QT_ICU_DLLS} )
 			SET( RAPA_QT_RELEASE_PLATFORMS_DLLS
 				${RAPA_QT_ROOT_DIR}/plugins/platforms/qwindows.dll ) 
 		ENDIF()
